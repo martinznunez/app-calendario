@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import { Provider } from "react-redux";
+import store from "./store";
+import Calendario from "./components/Calendario";
+import styled from "@emotion/styled";
+
+const ContainerGeneral = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
+
+const ContainerTitulo = styled.div`
+  color: #fff;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Provider store={store}>
+        <ContainerGeneral>
+          <ContainerTitulo>
+            <h1>CALENDARIO</h1>
+          </ContainerTitulo>
+        </ContainerGeneral>
+
+        <div>
+          <Calendario />
+        </div>
+      </Provider>
+    </>
   );
 }
 
