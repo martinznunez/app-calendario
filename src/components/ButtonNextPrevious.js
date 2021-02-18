@@ -51,9 +51,7 @@ const ButtonNextPrevious = () => {
   return (
     <ContainerBtn>
       {months <= 1 ? (
-        <BtnProvious onClick={handClickPrevious} disabled={true}>
-          Anterior
-        </BtnProvious>
+        <BtnProvious disabled={true}>Anterior</BtnProvious>
       ) : (
         <BtnProvious onClick={handClickPrevious} disabled={false}>
           Anterior
@@ -61,9 +59,7 @@ const ButtonNextPrevious = () => {
       )}
 
       {months > 11 ? (
-        <BtnNext onClick={handClickNext} disabled={true}>
-          Proximo
-        </BtnNext>
+        <BtnNext disabled={true}>Proximo</BtnNext>
       ) : (
         <BtnNext onClick={handClickNext} disabled={false}>
           Proximo
