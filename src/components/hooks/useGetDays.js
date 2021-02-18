@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getDate } from "date-fns";
-import { obtenerDays } from "../../actions/CalendarioActions";
+import { getDays } from "../../actions/CalendarioActions";
 import { eachDayOfInterval } from "date-fns";
 import { useSelector } from "react-redux";
 
@@ -21,7 +21,7 @@ export const useGetDays = () => {
   }, []);
 
   if (diaActual) {
-    dispatch(obtenerDays(diasCalendario));
+    dispatch(getDays(diasCalendario));
   }
 
   useEffect(() => {

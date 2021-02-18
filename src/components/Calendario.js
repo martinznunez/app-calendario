@@ -3,6 +3,7 @@ import { useGetYear } from "./hooks/useGetYear";
 import { useGetMonths } from "./hooks/useGetMonths";
 import { useGetDays } from "./hooks/useGetDays";
 import Nota from "./Nota";
+import ButtonNextPrevious from "./ButtonNextPrevious";
 import styled from "@emotion/styled";
 
 import {
@@ -190,7 +191,7 @@ const MarcadorDia = styled.p`
 
 const Calendario = () => {
   const { year } = useGetYear();
-  const { month } = useGetMonths();
+  let { month } = useGetMonths();
   const { diaActual } = useGetDays();
 
   const dispatch = useDispatch();
@@ -201,11 +202,21 @@ const Calendario = () => {
 
   const totalDias = useSelector((state) => state.data.days);
 
+  const nextMonthValue = useSelector((state) => state.data.nextMonth);
+
+  const previousMonthValue = useSelector((state) => state.data.previousMonth);
+
   const [gurdarFechasFormato, setGuardarFechasFormato] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   const [editNota, setEditNota] = useState("");
   const [notaSiendoEditada, setNotaSiendoEditada] = useState(null);
+
+  if (nextMonthValue) {
+    month = nextMonthValue - 1;
+  } else if (previousMonthValue) {
+    month = previousMonthValue - 1;
+  }
 
   useEffect(() => {
     if (totalDias.length) {
@@ -278,6 +289,7 @@ const Calendario = () => {
           {diaActual} - {months} - {year}
         </h2>
       </ContainerTitulo>
+      <ButtonNextPrevious />
       <ContainerGeneralCalendario>
         <ContainerDiasSemana>
           {fechasTranformadas.map((fecha) => (

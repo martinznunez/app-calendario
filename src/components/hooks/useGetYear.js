@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { obtenerYear } from "../../actions/CalendarioActions";
+import { getYear } from "../../actions/CalendarioActions";
 
 export const useGetYear = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export const useGetYear = () => {
     const data = new Date().getFullYear();
     setYear(data);
 
-    dispatch(obtenerYear(data));
+    dispatch(getYear(data));
   }, [dispatch]);
 
   return { year };

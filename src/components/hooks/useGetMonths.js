@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { obtenerMonth } from "../../actions/CalendarioActions";
+import { getMonth } from "../../actions/CalendarioActions";
 
 export const useGetMonths = () => {
   const dispatch = useDispatch();
@@ -11,8 +11,10 @@ export const useGetMonths = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth();
 
+    console.log(month);
+
     setMonth(month);
-    dispatch(obtenerMonth(month));
+    dispatch(getMonth(month));
   }, [dispatch]);
 
   return { month };

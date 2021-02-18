@@ -5,21 +5,23 @@ import {
   OBTENER_NOTAS_EXITO,
   OBTENER_NUMERO_NOTA_POR_DIA_EXITO,
   ACTUALIZAR_NOTA,
+  MONTH_NEXT,
+  MONTH_PREVIOUS,
 } from "../types/index";
 
-export function obtenerYear(year) {
+export function getYear(year) {
   return (dispatch) => {
     dispatch(ResultadoYear(year));
   };
 }
 
-export function obtenerMonth(Month) {
+export function getMonth(Month) {
   return (dispatch) => {
     dispatch(ResultadoMonth(Month));
   };
 }
 
-export function obtenerDays(cantidadDiasDelMes) {
+export function getDays(cantidadDiasDelMes) {
   return (dispatch) => {
     dispatch(ResultadoDays(cantidadDiasDelMes));
   };
@@ -40,6 +42,18 @@ export function notaPorDiaActions(numeroDia) {
 export function actualizarNota(notaId, text) {
   return (dispatch) => {
     dispatch(actualizarNotaAction(notaId, text));
+  };
+}
+
+export function monthNext(getMonthNext) {
+  return (dispatch) => {
+    dispatch(actualizarState(getMonthNext));
+  };
+}
+
+export function monthPrevious(getMonthPrevious) {
+  return (dispatch) => {
+    dispatch(actualizarStatePrevious(getMonthPrevious));
   };
 }
 
@@ -74,4 +88,14 @@ const actualizarNotaAction = (notaId, text) => ({
     notaId,
     text,
   },
+});
+
+const actualizarState = (getMonthNext) => ({
+  type: MONTH_NEXT,
+  payload: getMonthNext,
+});
+
+const actualizarStatePrevious = (getMonthPrevious) => ({
+  type: MONTH_PREVIOUS,
+  payload: getMonthPrevious,
 });

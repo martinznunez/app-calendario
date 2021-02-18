@@ -5,6 +5,8 @@ import {
   OBTENER_NOTAS_EXITO,
   OBTENER_NUMERO_NOTA_POR_DIA_EXITO,
   ACTUALIZAR_NOTA,
+  MONTH_NEXT,
+  MONTH_PREVIOUS,
 } from "../types/index";
 
 const initialState = {
@@ -15,6 +17,8 @@ const initialState = {
   loading: false,
   notas: [],
   NumeroDeNota: "",
+  nextMonth: "",
+  previousMonth: "",
 };
 
 export default function calendarioReducer(state = initialState, action) {
@@ -70,6 +74,20 @@ export default function calendarioReducer(state = initialState, action) {
         ...state,
         notas: notasFinal,
         error: null,
+      };
+
+    case MONTH_NEXT:
+      return {
+        ...state,
+        nextMonth: action.payload,
+        months: action.payload,
+      };
+
+    case MONTH_PREVIOUS:
+      return {
+        ...state,
+        previousMonth: action.payload,
+        months: action.payload,
       };
 
     default:
