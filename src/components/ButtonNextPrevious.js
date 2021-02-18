@@ -5,7 +5,6 @@ import { monthNext, monthPrevious } from "../actions/CalendarioActions";
 import styled from "@emotion/styled";
 
 const ContainerBtn = styled.div`
-  /* background-color: violet; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -19,10 +18,7 @@ const BtnNext = styled.button`
   color: #fff;
   font-weight: bold;
   border: 2px solid;
-  ${(props) =>
-    props.disabled
-      ? "background: red  cursor: not-allowed"
-      : "background: blue"};
+  ${(props) => (props.disabled ? "background: red " : "background: blue")};
 `;
 
 const BtnProvious = styled.button`

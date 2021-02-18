@@ -11,8 +11,6 @@ export const useGetMonths = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth();
 
-    console.log(month);
-
     setMonth(month);
     dispatch(getMonth(month));
   }, [dispatch]);

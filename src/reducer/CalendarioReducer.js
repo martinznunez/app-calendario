@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   year: "",
-  months: [],
+  months: "",
   days: [],
   error: null,
   loading: false,
