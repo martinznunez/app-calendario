@@ -191,7 +191,7 @@ const MarcadorDia = styled.p`
 
 const Calendario = () => {
   const { year } = useGetYear();
-  let { month } = useGetMonths();
+  const { month, setMonth } = useGetMonths();
   const { diaActual } = useGetDays();
 
   const dispatch = useDispatch();
@@ -212,10 +212,10 @@ const Calendario = () => {
   const [editNota, setEditNota] = useState("");
   const [notaSiendoEditada, setNotaSiendoEditada] = useState(null);
 
-  if (nextMonthValue) {
-    month = nextMonthValue - 1;
-  } else if (previousMonthValue) {
-    month = previousMonthValue - 1;
+  if (nextMonthValue.length) {
+    setMonth(nextMonthValue - 1);
+  } else if (previousMonthValue.length) {
+    setMonth(previousMonthValue - 1);
   }
 
   useEffect(() => {

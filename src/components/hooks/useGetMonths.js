@@ -15,5 +15,5 @@ export const useGetMonths = () => {
     dispatch(getMonth(month));
   }, [dispatch]);
 
-  return { month };
+  return { month, setMonth };
 };
