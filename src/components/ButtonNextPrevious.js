@@ -10,7 +10,7 @@ const ContainerBtn = styled.div`
   justify-content: space-around;
 `;
 
-const BtnNext = styled.button`
+const Button = styled.button`
   width: 130px;
   padding: 10px;
   color: palevioletred;
@@ -21,14 +21,6 @@ const BtnNext = styled.button`
   ${(props) => (props.disabled ? "background: red " : "background: blue")};
 `;
 
-const BtnProvious = styled.button`
-  width: 130px;
-  color: #fff;
-  cursor: pointer;
-  border: 2px solid;
-  padding: 10px;
-  ${(props) => (props.disabled ? "background: red" : "background: blue")};
-`;
 const ButtonNextPrevious = () => {
   const dispatch = useDispatch();
 
@@ -36,8 +28,6 @@ const ButtonNextPrevious = () => {
 
   const handClickNext = () => {
     const getMonthNext = months + 1;
-
-    console.log(getMonthNext);
 
     dispatch(monthNext(getMonthNext));
   };
@@ -51,19 +41,19 @@ const ButtonNextPrevious = () => {
   return (
     <ContainerBtn>
       {months <= 1 ? (
-        <BtnProvious disabled={true}>Anterior</BtnProvious>
+        <Button disabled={true}>Anterior</Button>
       ) : (
-        <BtnProvious onClick={handClickPrevious} disabled={false}>
+        <Button onClick={handClickPrevious} disabled={false}>
           Anterior
-        </BtnProvious>
+        </Button>
       )}
 
       {months > 11 ? (
-        <BtnNext disabled={true}>Proximo</BtnNext>
+        <Button disabled={true}>Proximo</Button>
       ) : (
-        <BtnNext onClick={handClickNext} disabled={false}>
+        <Button onClick={handClickNext} disabled={false}>
           Proximo
-        </BtnNext>
+        </Button>
       )}
     </ContainerBtn>
   );
