@@ -49,7 +49,7 @@ const ButtonNextPrevious = () => {
       )}
 
       {months > 11 ? (
-        <Button disabled={true}>Proximo</Button>
+        <Button disabled={true}>Próximo</Button>
       ) : (
         <Button onClick={handClickNext} disabled={false}>
           Proximo
