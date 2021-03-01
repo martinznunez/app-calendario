@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetYear } from "./hooks/useGetYear";
 import { useGetMonths } from "./hooks/useGetMonths";
 import { useGetDays } from "./hooks/useGetDays";
+import { useHeaderFecha } from "./hooks/useHeaderFecha";
 import Nota from "./Nota";
 import ButtonNextPrevious from "./ButtonNextPrevious";
 import styled from "@emotion/styled";
@@ -185,6 +186,25 @@ const ContainerEdit = styled.div`
   }
 `;
 
+const ContainerFecha = styled.div`
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 2px;
+  margin-bottom: 10px;
+`;
+
+const TextoFecha = styled.p`
+  color: #f8cf61;
+  font-size: 1.2rem;
+  font-weight: 900;
+`;
+
 const MarcadorDia = styled.p`
   color: red;
 `;
@@ -193,12 +213,11 @@ const Calendario = () => {
   const { year } = useGetYear();
   const { month, setMonth } = useGetMonths();
   const { diaActual } = useGetDays();
+  const { fecha } = useHeaderFecha();
 
   const dispatch = useDispatch();
 
   const todasLasNotas = useSelector((state) => state.data.notas);
-
-  const months = useSelector((state) => state.data.months);
 
   const totalDias = useSelector((state) => state.data.days);
 
@@ -285,9 +304,9 @@ const Calendario = () => {
   return (
     <>
       <ContainerTitulo>
-        <h2>
-          {diaActual} - {months} - {year}
-        </h2>
+        <ContainerFecha>
+          <TextoFecha>{fecha} </TextoFecha>
+        </ContainerFecha>
       </ContainerTitulo>
       <ButtonNextPrevious />
       <ContainerGeneralCalendario>
