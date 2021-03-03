@@ -54,6 +54,12 @@ const ContainerDia = styled.div`
   @media screen and (min-width: 1200px) {
     width: 122px;
   }
+  @media screen and (min-width: 1600px) {
+    width: 200px;
+  }
+  @media screen and (min-width: 1800px) {
+    width: 237px;
+  }
 `;
 
 const Dia = styled.div`
@@ -143,6 +149,12 @@ const ContainerDiasSemana = styled.div`
   @media screen and (min-width: 1200px) {
     width: 90%;
   }
+  @media screen and (min-width: 1600px) {
+    width: 90%;
+  }
+  @media screen and (min-width: 1800px) {
+    width: 90%;
+  }
 `;
 
 const ContainerGeneralCalendario = styled.div`
@@ -157,9 +169,16 @@ const ContainerGeneralCalendario = styled.div`
   @media screen and (min-width: 665px) {
     width: 730px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1200px) {›
     width: 980px;
     padding-bottom: 20px;
+  }
+
+  @media screen and (min-width: 1600px) {
+    width: 1590px;
+  }
+  @media screen and (min-width: 1800px) {
+    width: 1880px;
   }
 `;
 

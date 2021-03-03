@@ -12,6 +12,16 @@ const ContainerGeneral = styled.div`
   padding: 20px;
 `;
 
+const ContainerCalendario = styled.div`
+  @media screen and (min-width: 1800px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
+`;
+
 const ContainerTitulo = styled.div`
   color: #fff;
 `;
@@ -26,9 +36,9 @@ function App() {
           </ContainerTitulo>
         </ContainerGeneral>
 
-        <div>
+        <ContainerCalendario>
           <Calendario />
-        </div>
+        </ContainerCalendario>
       </Provider>
     </>
   );
