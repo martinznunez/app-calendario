@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+// import { useSelector } from "react-redux";
 
 export const useHeaderFecha = () => {
-  const [fecha, setFecha] = useState();
+  const [fechaInicial, setFechaInicial] = useState();
+  //   const month = useSelector((state) => state.data.months);
 
   useEffect(() => {
     const fechaActual = new Date();
@@ -13,8 +15,8 @@ export const useHeaderFecha = () => {
       day: "numeric",
     };
 
-    setFecha(fechaActual.toLocaleDateString("es-ES", options));
+    setFechaInicial(fechaActual.toLocaleDateString("es-ES", options));
   }, []);
 
-  return { fecha };
+  return { fechaInicial };
 };

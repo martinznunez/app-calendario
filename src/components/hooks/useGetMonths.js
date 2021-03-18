@@ -5,15 +5,15 @@ import { getMonth } from "../../actions/CalendarioActions";
 
 export const useGetMonths = () => {
   const dispatch = useDispatch();
-  const [month, setMonth] = useState();
+  const [monthPrevious, setMonthPrevious] = useState();
 
   useEffect(() => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth();
 
-    setMonth(month);
+    setMonthPrevious(month);
     dispatch(getMonth(month));
   }, [dispatch]);
 
-  return { month, setMonth };
+  return { monthPrevious, setMonthPrevious };
 };

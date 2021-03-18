@@ -4,7 +4,7 @@ import { useGetMonths } from "./hooks/useGetMonths";
 import { useGetDays } from "./hooks/useGetDays";
 import { useHeaderFecha } from "./hooks/useHeaderFecha";
 import Nota from "./Nota";
-import ButtonNextPrevious from "./ButtonNextPrevious";
+// import ButtonNextPrevious from "./ButtonNextPrevious";
 import styled from "@emotion/styled";
 
 import {
@@ -169,7 +169,7 @@ const ContainerGeneralCalendario = styled.div`
   @media screen and (min-width: 665px) {
     width: 730px;
   }
-  @media screen and (min-width: 1200px) {›
+  @media screen and (min-width: 1200px) {
     width: 980px;
     padding-bottom: 20px;
   }
@@ -230,19 +230,21 @@ const MarcadorDia = styled.p`
 
 const Calendario = () => {
   const { year } = useGetYear();
-  const { month, setMonth } = useGetMonths();
+  const { monthPrevious } = useGetMonths();
   const { diaActual } = useGetDays();
-  const { fecha } = useHeaderFecha();
+  const { fechaInicial } = useHeaderFecha();
 
   const dispatch = useDispatch();
+
+  //   const  = useSelector((state) => state.data.notas);
 
   const todasLasNotas = useSelector((state) => state.data.notas);
 
   const totalDias = useSelector((state) => state.data.days);
 
-  const nextMonthValue = useSelector((state) => state.data.nextMonth);
+  //   const nextMonthValue = useSelector((state) => state.data.nextMonth);
 
-  const previousMonthValue = useSelector((state) => state.data.previousMonth);
+  //   const previousMonthValue = useSelector((state) => state.data.previousMonth);
 
   const [gurdarFechasFormato, setGuardarFechasFormato] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -250,26 +252,28 @@ const Calendario = () => {
   const [editNota, setEditNota] = useState("");
   const [notaSiendoEditada, setNotaSiendoEditada] = useState(null);
 
-  if (nextMonthValue.length) {
-    setMonth(nextMonthValue - 1);
-  } else if (previousMonthValue.length) {
-    setMonth(previousMonthValue - 1);
-  }
+  //   if (nextMonthValue.length) {
+  //     setMonth(nextMonthValue - 1);
+  //   } else if (previousMonthValue.length) {
+  //     setMonth(previousMonthValue - 1);
+  //   }
 
   useEffect(() => {
     if (totalDias.length) {
       const obtenerFormatosDias = eachDayOfInterval({
-        start: new Date(year, month, -3),
-        end: new Date(year, month, 3),
+        start: new Date(year, monthPrevious, -3),
+        end: new Date(year, monthPrevious, 3),
       });
 
       setGuardarFechasFormato(obtenerFormatosDias);
     }
-  }, [month, totalDias, year]);
+  }, [monthPrevious, totalDias, year]);
 
   const fechasTranformadas = gurdarFechasFormato.map((fecha) =>
     fecha.toISOString()
   );
+
+  console.log(gurdarFechasFormato);
 
   const nombreDelDiaSegunFecha = (fecha) =>
     ["dom", "lun", "mar", "miér", "jue", "vier", "sáb", "dom"][
@@ -324,10 +328,10 @@ const Calendario = () => {
     <>
       <ContainerTitulo>
         <ContainerFecha>
-          <TextoFecha>{fecha} </TextoFecha>
+          <TextoFecha> {fechaInicial} </TextoFecha>
         </ContainerFecha>
       </ContainerTitulo>
-      <ButtonNextPrevious />
+      {/* <ButtonNextPrevious /> */}
       <ContainerGeneralCalendario>
         <ContainerDiasSemana>
           {fechasTranformadas.map((fecha) => (
